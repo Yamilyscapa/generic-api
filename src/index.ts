@@ -1,7 +1,7 @@
 // Imports
 import express from 'express';
 import { config as dotenv } from 'dotenv';
-import type { Application, Request, Response } from 'express';
+const cors = require('cors');
 
 // Controllers
 import {
@@ -12,11 +12,19 @@ import {
 
 // TS
 import { User } from './types';
+import type { Application, Request, Response } from 'express';
 
 // Initializations
 dotenv();
 const app: Application = express();
+
+// Middlewares
 app.use(express.json());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
