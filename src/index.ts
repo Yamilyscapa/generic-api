@@ -33,7 +33,7 @@ app.get('/', (req: Request, res: Response) => {
 
 // Users
 app.get('/users', async (req: Request, res: Response) => {
-  const users = getManyUser();
+  const users = await getManyUser();
   res.json(users);
 });
 
